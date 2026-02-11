@@ -2,11 +2,14 @@
 // Type assertions are a way to tell the TypeScript compiler "trust me, I know what I'm doing" about the type of a value.
 // Use annotations when defining types, use assertions sparingly when you know more than TypeScript can infer.
 // Assertions don't change runtime behavior, just compile-time type checking
+// Because type assertions are removed at compile-time, there is no runtime checking associated with a type assertion. There won’t be an exception or null generated if the type assertion is wrong.
 
 // Example 1
 let someValue: unknown = "this is a string";
 // let someValueLength: number = someValue.length; // Although someValue is string we can't access length property
 let someValueLength: number = (someValue as string).length;
+let someValueLength2 = someValue as number;
+console.log(someValueLength2.toFixed(2)); // Run time Error as type assertion is wrong !!!
 
 // Example 2
 // let inputEle = document.getElementById("username"); // inputEle type is -> HTMLElement | null
