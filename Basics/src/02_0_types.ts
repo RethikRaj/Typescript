@@ -19,4 +19,4 @@ console.log(yearsToDay(2));
 // Good Practices
 //
 // 1. Don't use "any" , instead use void(functions does not return anything), never(function never returns), unknown
-// Because any can lead to runtime
+// Because any can lead to runtime errors
