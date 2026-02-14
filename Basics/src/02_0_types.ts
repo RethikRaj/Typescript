@@ -19,4 +19,7 @@ console.log(yearsToDay(2));
 // Good Practices
 //
 // 1. Don't use "any" , instead use void(functions does not return anything), never(function never returns), unknown
-// Because any can lead to runtime errors
+// Because any can lead to runtime errors but compiles succesfully -> Dangerous 
+// Example : Below code compiles succesfully but breaks at runtime.
+// let countryId : any = 47;
+// console.log(country.toUpperCase());
