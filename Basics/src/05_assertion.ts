@@ -4,12 +4,20 @@
 // Assertions don't change runtime behavior, just compile-time type checking
 // Because type assertions are removed at compile-time, there is no runtime checking associated with a type assertion. There won’t be an exception or null generated if the type assertion is wrong.
 
-// Example 1
-let someValue: unknown = "this is a string";
+// Example 1 
+let someValue: unknown = "this is a string"; // Actual runtime value is string
 // let someValueLength: number = someValue.length; // Although someValue is string we can't access length property
+
+// The below line forces TS to treat someValue as string. Thre will be no compilation error because we asserted that we know better than the TS compiler. And at the run time , since the actual runtime value is string and thus we get no error.
 let someValueLength: number = (someValue as string).length;
-let someValueLength2 = someValue as number;
+
+// The below line forces TS to treat someValue as number. Thre will be no compilation error because we asserted that we know better than the TS compiler. But at the run time , since the actual runtime value is string and string datatype doesn't have toFixed() function and therefore we get run time error.
+let someValueLength2 = someValue as number; 
 console.log(someValueLength2.toFixed(2)); // Run time Error as type assertion is wrong !!!
+
+// Observation from Example 1 :
+// Safe assertion : The underlying runtime datatype matches the asserted datatype.
+// Unsafe assertion : The underlying runtime datatype doesn't matches the asserted datatype. Therefore it might cause runtime error.
 
 // Example 2
 // let inputEle = document.getElementById("username"); // inputEle type is -> HTMLElement | null
@@ -26,7 +34,7 @@ let bookString1 = `{"name": "Harry Potter"}`;
 let bookString2 = `{"name": "Harry Potter", "author" : "J.K.Rowling"}`;
 
 // ========================================
-// THE PROBLEM: Why Type Annotations Don't Help
+// THE PROBLEM: Why Type Inferencing , Type Annotations, Type Assertion Don't Help
 // ========================================
 
 let bookJSON10 = JSON.parse(bookString1);
@@ -124,7 +132,7 @@ if (result.success) {
 }
 
 // ========================================
-// Solution 3: Optional Chaining (Quick Safety Net)
+// Solution 3: Optional Chaining (Quick Safety Net) -> Use it only when the paramaters/ fields are really optional in the data model itself.
 // ========================================
 
 // Optional chaining (?.) doesn't validate - it just prevents crashes
