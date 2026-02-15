@@ -1,4 +1,4 @@
-// Example : let's create a identity function
+// Example1 : let's create a identity function
 
 // Without Generics
 // Problem : For the below code we need to have multiple functions for different types.
@@ -23,3 +23,19 @@ function identityGeneric<T>(arg: T): T {
 const out1 = identityGeneric<number>(5); // Here, we explicitly set T to be number.
 // 2. Type argument inference : TS compiler sets the value of T based on the type of the argument
 const out2 = identityGeneric(5); // TS compiler infers T as number.
+
+// ==============================
+// Example 2 : Understand what is the dataType of a generic function
+// ==============================
+
+// Normal function
+// The below function dataType is `(arg: string) => string`
+let normalFunction = function (arg: string): string {
+  return arg;
+};
+
+// Generic function
+// The below function dataType is `<ItemType>(arg: ItemType) => ItemType`. The only difference is a prefixed typed parameter.
+let genericFunction = function <ItemType>(arg: ItemType): ItemType {
+  return arg;
+};
