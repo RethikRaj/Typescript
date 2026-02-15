@@ -62,3 +62,12 @@ console.log(getPropertyValue(product, "name"));
 console.log(getPropertyValue(user, "contact"));
 console.log(getPropertyValue(user, "name"));
 // console.log(getPropertyValue(user, "anythingElseGivesError"));
+
+// Example 4 : Problem statement given any object and its key and a newvalue , set key with the provided newvalue.
+
+function setPropertyValue<T, K extends keyof T>(obj: T, key: K, newVal: T[K]) {
+  obj[key] = newVal;
+}
+
+setPropertyValue(product, "releaseYear", 2026);
+console.log(getPropertyValue(product, "releaseYear"));
