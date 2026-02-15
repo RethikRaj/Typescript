@@ -39,7 +39,7 @@ console.log(
   describeTypeOf(23),
   describeTypeOf(true),
   describeTypeOf(10n),
-  describeTypeOf(Symbol("sangam")),
+  describeTypeOf(Symbol("rethik")),
   describeTypeOf(undefined),
   describeTypeOf(() => {}),
   describeTypeOf(null),
