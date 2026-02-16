@@ -18,6 +18,7 @@ connectToServerWithOptional("localhost");
 connectToServerWithOptional("localhost", 8080);
 connectToServerWithOptional("localhost", undefined, true);
 
+// Default Parameters/fields
 // Example 2 :
 function connectToServerWithDefault(
   host: String,
